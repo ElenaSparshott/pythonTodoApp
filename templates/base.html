@@ -10,7 +10,7 @@
 </head>
 <body style="margin:100px">
 
-    <h1 style="margin-top: 50px" class="ui center aligned header">Todo App</h1>
+    <h1 style="margin-top: 50px" class="ui center aligned header">A Python Todo App</h1>
 
     <form class="ui form" action="/add" method="post">
             <div class="field">
@@ -29,12 +29,13 @@
 
     {% for todo in todo_list %}
     <div class="ui segment">
-        <p class="ui big header">{{ todo.id }} | {{ todo.title }}</p>
+        <p class="ui big header">{{ todo.id }}  <br> |   {{ todo.title }}</p>
 
         {% if todo.done == False %}
             <span class="ui grey label">Not Completed</span>
         {% else %}
             <span class="ui green label">Completed</span>
+            <i class="thumbs up outline icon"></i>
         {% endif %}
 
         <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
