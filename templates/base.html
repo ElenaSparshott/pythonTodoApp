@@ -32,8 +32,10 @@
         <p class="ui big header">{{ todo.id }}  <br> |   {{ todo.title }}</p>
 
         {% if todo.done == False %}
+            <i class="thumbs down outline icon"></i>
             <span class="ui grey label">Not Completed</span>
         {% else %}
+            
             <span class="ui green label">Completed</span>
             <i class="thumbs up outline icon"></i>
         {% endif %}
