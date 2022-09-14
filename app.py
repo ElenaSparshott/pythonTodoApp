@@ -30,12 +30,46 @@ def add():
     return redirect(url_for("index"))
 
 
-@app.route("/update/<int:todo_id>")
-def update(todo_id):
+@app.route("/completed/<int:todo_id>")
+def completed(todo_id):
     todo = Todo.query.filter_by(id=todo_id).first()
     todo.done = not todo.done
     db.session.commit()
     return redirect(url_for("index"))
+    
+
+@app.route("/update/<int:todo_id>", methods=['GET','POST'])
+def update(todo_id):
+    todo = Todo.query.get_or_404(todo_id)
+
+    if request.method == "POST":
+        todo.title = request.form['title']
+
+        try:
+            db.session.commit()
+            return redirect(url_for("index"))
+        except:
+            return 'There was an issue while updating that task'
+
+    else:
+        return render_template('update.html', task=todo)
+
+
+# @app.route('/update/<int:id>', methods=['GET','POST'])
+# def update(id):
+#     task = Todo.query.get_or_404(id)
+
+#     if request.method == 'POST':
+#         task.content = request.form['content']
+
+#         try:
+#             db.session.commit()
+#             return redirect('/')
+#         except:
+#             return 'There was an issue while updating that task'
+
+#     else:
+#         return render_template('update.html', task=task)
 
 
 @app.route("/delete/<int:todo_id>")
