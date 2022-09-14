@@ -33,14 +33,15 @@
 
         {% if todo.done == False %}
             <i class="thumbs down outline icon"></i>
-            <span class="ui grey label">Not Completed</span>
+            <span class="ui grey label">To Do</span>
         {% else %}
             
-            <span class="ui green label">Completed</span>
+            <span class="ui green label">Done !</span>
             <i class="thumbs up outline icon"></i>
         {% endif %}
 
-        <a class="ui blue button" href="/update/{{ todo.id }}">Update</a>
+        <a class="ui blue button" href="/update/{{ todo.id }}">Completed</a>
+        <a class="ui yellow button" href="/update/{{ todo.id }}">Update</a>
         <a class="ui red button" href="/delete/{{ todo.id }}">Delete</a>
     </div>
     {% endfor %}
